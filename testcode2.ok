@@ -1,0 +1,31 @@
+/* Factorial example */
+variables
+y, x, j, t --> int;
+r --> int
+
+function fact(b --> int; i --> int; p --> int)
+{
+    while (i<b)
+        {
+            p -> p*i;
+            i -> i+1
+        };
+    return p*b
+}
+
+{
+
+    x -> 1;
+    y -> 7;
+    j -> 1;
+
+    while(x<y)
+    {
+        r -> 1;
+        r -> fact(x; j; r);
+        write(r);
+        write("\n");
+        x -> x+1
+    }
+
+}
