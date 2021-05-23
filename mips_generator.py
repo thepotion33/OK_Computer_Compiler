@@ -10,35 +10,6 @@ flag = False
 str_count = 0
 
 
-def CreateRegTable():
-    for i in range(len(temp_reg_values)):
-        if temp_reg_values['t' + str(i)][0].isnumeric():
-            temp_reg_values['t' + str(i)] = []
-            temp_reg_values['t' + str(i)] = 'int'
-            table['t' + str(i)] = []
-            table['t' + str(i)] = 'int'
-        elif check_number(temp_reg_values['t' + str(i)][0]):
-            temp_reg_values['t' + str(i)] = []
-            temp_reg_values['t' + str(i)] = 'real'
-            floatReg['f' + str(i)] = []
-            floatReg['f' + str(i)].append('real')
-            table['t' + str(i)] = []
-            table['t' + str(i)] = 'real'
-        elif temp_reg_values['t' + str(i)][0] in table and table[temp_reg_values['t' + str(i)][0]][1] == 'int':
-
-            temp_reg_values['t' + str(i)] = []
-            temp_reg_values['t' + str(i)] = 'int'
-            table['t' + str(i)] = []
-            table['t' + str(i)] = 'int'
-        elif temp_reg_values['t' + str(i)][0] in table and table[temp_reg_values['t' + str(i)][0]][1] == 'real':
-            temp_reg_values['t' + str(i)] = []
-            temp_reg_values['t' + str(i)] = 'real'
-            floatReg['f' + str(i)] = []
-            floatReg['f' + str(i)].append('real')
-            table['t' + str(i)] = []
-            table['t' + str(i)] = 'real'
-
-
 def AssignHandler(f, parsed_commands):
     global data
     if parsed_commands[1].isnumeric() and (
@@ -177,6 +148,35 @@ def MultHandler(f, parsed_commands, table):
         else:
             print('Incorrect type!')
             return
+
+
+def CreateRegTable():
+    for i in range(len(temp_reg_values)):
+        if temp_reg_values['t' + str(i)][0].isnumeric():
+            temp_reg_values['t' + str(i)] = []
+            temp_reg_values['t' + str(i)] = 'int'
+            table['t' + str(i)] = []
+            table['t' + str(i)] = 'int'
+        elif check_number(temp_reg_values['t' + str(i)][0]):
+            temp_reg_values['t' + str(i)] = []
+            temp_reg_values['t' + str(i)] = 'real'
+            floatReg['f' + str(i)] = []
+            floatReg['f' + str(i)].append('real')
+            table['t' + str(i)] = []
+            table['t' + str(i)] = 'real'
+        elif temp_reg_values['t' + str(i)][0] in table and table[temp_reg_values['t' + str(i)][0]][1] == 'int':
+
+            temp_reg_values['t' + str(i)] = []
+            temp_reg_values['t' + str(i)] = 'int'
+            table['t' + str(i)] = []
+            table['t' + str(i)] = 'int'
+        elif temp_reg_values['t' + str(i)][0] in table and table[temp_reg_values['t' + str(i)][0]][1] == 'real':
+            temp_reg_values['t' + str(i)] = []
+            temp_reg_values['t' + str(i)] = 'real'
+            floatReg['f' + str(i)] = []
+            floatReg['f' + str(i)].append('real')
+            table['t' + str(i)] = []
+            table['t' + str(i)] = 'real'
 
 
 def DivHandler(f, parsed_commands, table):
@@ -536,7 +536,7 @@ def CallHandler(f, tac, table):
 def Generate(tac, table):
     global if_count, skip_count, flag, str_count, data
     data = data + '.data\n\ttrue: .byte 1\n\tfalse: .byte 0\n'
-    f = open('../examples/MIPS.s', 'w')
+    f = open('MIPS.s', 'w')
     f.write('.text\n')
 
     for reg in table:
