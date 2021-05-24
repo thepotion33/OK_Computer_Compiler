@@ -38,3 +38,5 @@ i, a, b, n, c, t --> int
 5  
 8  
 13  
+## Видео:
+https://disk.yandex.ru/i/1IfgLQmH2AND5g
